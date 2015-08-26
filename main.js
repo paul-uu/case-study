@@ -1,8 +1,8 @@
 window.onload = function() {
 
 	var form = document.getElementById('my_form');
-	form.addEventListener('submit', function(event) {
-		event.preventDefault();
+	form.addEventListener('submit', function(e) {
+		e.preventDefault();
 		var first_name  = document.getElementById('input_firstname').value,
 			last_name   = document.getElementById('input_lastname').value,
 			email       = document.getElementById('input_email').value;
@@ -25,10 +25,7 @@ window.onload = function() {
 				xhr.onreadystatechange = function() {
 					if (xhr.readyState == 4) {
 						if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
-							console.log('status: ' + xhr.status + ', response: '+ xhr.responseText);
-							//window.location.href='thankyou.html';
-						} else {
-							console.log('status: ' + xhr.status + ', response: '+ xhr.responseText);
+							window.location.href='thankyou.html';
 						}
 					}
 				};
@@ -37,9 +34,12 @@ window.onload = function() {
 				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				xhr.send(data_string);
 
-			}	
+			} else {
+				error_email.innerHTML = 'please enter a valid email';
+			}
 		} 
 		else {
+			// show/remove form error messages
 			error_first.innerHTML = first_name == '' ? 'please enter first name' : '';
 			error_last.innerHTML  = last_name  == '' ? 'please enter last name'  : '';
 			error_email.innerHTML = email      == '' ? 'please enter a email'    : '';
