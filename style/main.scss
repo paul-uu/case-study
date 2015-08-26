@@ -1,0 +1,123 @@
+$error_text: #FF7373;
+$dark_grey: #555;
+
+/* general mixin for venfor prefixes */
+@mixin prefix($property, $value, $vendors: webkit moz ms o) {
+	@if $vendors {
+		@each $vendor in $vendors {
+			#{"-" + $vendor + "-" $property}: #{$value}
+		}
+	}
+	#{$property}: #{$value};
+}
+
+
+* {
+	@include prefix(box-sizing, border-box, webkit moz ms o);
+}
+html, body {
+	margin: 0 0;
+	width: 0 0;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+#page-container {
+	padding: 20px;
+}
+
+.item {
+	width: 100%;
+	display: block;
+	vertical-align: top;
+	margin-bottom: 20px;
+
+	img {
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.item-copy {
+		color: $dark_grey;
+
+		p {
+			margin: 0 0;
+		}
+	}
+}
+h3 {
+	text-transform: uppercase;
+	margin: 5px 0;
+}
+
+
+/* Form Styling */
+#form_container {
+	margin-top: 40px;
+
+	#my_form, h3 {
+		text-align: center;
+	}
+
+	#my_form {
+
+		.form_item {
+			display: inline-block;
+		}
+		#form_submit {
+			display: block;
+			width: 100px;
+			margin: 20px auto;
+		}
+	}
+}
+.text_input {
+	display: block;
+	width: 200px;
+	height: 36px;
+	padding: 5px;
+	font-size: 16px;
+}
+.error {
+	display:inline-block;
+	text-align: left;
+	width: 200px;
+	height: 16px;
+	color: $error_text;
+}
+
+
+/* ---------------- */
+/*   Device Layout  */
+/*   Phone layout   */
+@media only screen and (min-width: 300px) and (max-width: 767px) {
+	.item {
+		margin-bottom: 50px;
+	}
+	.item > img {
+		max-height: 100%;
+	}
+	.form_item {
+		width: 100%;
+	}
+	.text_input {
+		width: 100%;
+	}
+	.error {
+		width: 100%;
+		margin: 0 0 15px 0;
+	}
+}
+/* Tablet layout */
+@media only screen and (min-width: 768px) and (max-width: 1023px)  {
+	.item {
+		width: 49%;
+		display: inline-block;
+		margin-bottom: 35px;
+	}
+}
+/* Desktop layout */
+@media only screen and (min-width: 1024px) {
+	.item {
+		width: 33%;
+		display: inline-block;
+	}
+}
