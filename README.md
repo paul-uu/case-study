@@ -9,3 +9,6 @@ Requirements to run the site locally:
 Steps:  
 1. [Compile SCSS](http://sass-lang.com/documentation/) file to CSS  
 2. Place all files onto server with PHP installed
+
+
+[Live version](http://paulwittschen.com/case-study/)
