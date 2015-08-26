@@ -1,7 +1,5 @@
 window.onload = function() {
 
-	event.preventDefault ? event.preventDefault() : event.returnValue = false;
-
 	var form = document.getElementById('my_form');
 	form.addEventListener('submit', function(event) {
 		event.preventDefault();
